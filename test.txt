@@ -1,0 +1,20 @@
+Card: Radeon RX 6900 XT
+Title: PowerColor Red Devil AMD Radeon RX 6900 XT Ultimate 16GBGDDR6 Graphics Card READ
+Price: $249.0
+URL: https://www.ebay.com/itm/PowerColor-Red-Devil-AMD-Radeon-RX-6900-XT-Ultimate-16GBGDDR6-Graphics-Card-READ-/365023756411
+
+Card: GeForce RTX 3080 Ti
+Title: MSI GeForce RTX 3080 Ti VENTUS 3X OC 12GB GDDR6X Graphics Card
+Price: $490.0
+URL: https://www.ebay.com/itm/MSI-GeForce-RTX-3080-Ti-VENTUS-3X-OC-12GB-GDDR6X-Graphics-Card-/186584136601
+
+Card: Radeon RX 6800 XT
+Title: SAPPHIRE NITRO+ AMD Radeon RX 6800 XT SE 16GB GDDR6 Graphic Card
+Price: $350.0
+URL: https://www.ebay.com/itm/SAPPHIRE-NITRO-AMD-Radeon-RX-6800-XT-SE-16GB-GDDR6-Graphic-Card-/126494862685
+
+Card: GeForce RTX 3070
+Title: NVIDIA GeForce RTX 3070 8GB GDDR6 Graphics Card Blower. *Note: Loud Fans*
+Price: $249.99
+URL: https://www.ebay.com/itm/NVIDIA-GeForce-RTX-3070-8GB-GDDR6-Graphics-Card-Blower-Note-Loud-Fans-/266915162631
+

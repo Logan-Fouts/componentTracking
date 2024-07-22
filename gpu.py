@@ -1,0 +1,20 @@
+graphics_cards = [
+    "GeForce RTX 4090", "Radeon RX 7900 XTX", "GeForce RTX 4080 Super", "GeForce RTX 4080",
+    "Radeon RX 7900 XT", "GeForce RTX 4070 Ti Super", "GeForce RTX 4070 Ti", "Radeon RX 7900 GRE",
+    "GeForce RTX 4070 Super", "Radeon RX 6950 XT", "GeForce RTX 3090 Ti", "Radeon RX 7800 XT",
+    "GeForce RTX 3090", "Radeon RX 6900 XT", "GeForce RTX 3080 Ti", "Radeon RX 6800 XT",
+    "GeForce RTX 3080 12GB", "GeForce RTX 4070", "GeForce RTX 3080", "Radeon RX 7700 XT",
+    "Radeon RX 6800", "GeForce RTX 3070 Ti", "Radeon RX 6750 XT", "GeForce RTX 4060 Ti 16GB",
+    "GeForce RTX 4060 Ti", "Titan RTX", "Radeon RX 6700 XT", "GeForce RTX 3070", "GeForce RTX 2080 Ti",
+    "Radeon RX 7600 XT", "GeForce RTX 3060 Ti", "Radeon RX 6700 10GB", "GeForce RTX 2080 Super",
+    "GeForce RTX 4060", "GeForce RTX 2080", "Radeon RX 7600", "Radeon RX 6650 XT", "GeForce RTX 2070 Super",
+    "Intel Arc A770 16GB", "Intel Arc A770 8GB", "Radeon RX 6600 XT", "Radeon RX 5700 XT",
+    "GeForce RTX 3060", "Intel Arc A750", "GeForce RTX 2070", "Radeon VII", "GeForce GTX 1080 Ti",
+    "GeForce RTX 2060 Super", "Radeon RX 6600", "Intel Arc A580", "Radeon RX 5700", "Radeon RX 5600 XT",
+    "Radeon RX Vega 64", "GeForce RTX 2060", "GeForce GTX 1080", "GeForce RTX 3050", "GeForce GTX 1070 Ti",
+    "Radeon RX Vega 56", "GeForce GTX 1660 Super", "GeForce GTX 1660 Ti", "GeForce GTX 1070", "GeForce GTX 1660",
+    "Radeon RX 5500 XT 8GB", "Radeon RX 590", "GeForce GTX 980 Ti", "Radeon RX 580 8GB", "Radeon R9 Fury X",
+    "GeForce GTX 1650 Super", "Radeon RX 5500 XT 4GB", "GeForce GTX 1060 6GB", "Radeon RX 6500 XT", "Radeon R9 390",
+    "GeForce GTX 980", "GeForce GTX 1650 GDDR6", "Intel Arc A380", "Radeon RX 570 4GB", "GeForce GTX 1650",
+    "GeForce GTX 970", "Radeon RX 6400", "GeForce GTX 1050 Ti", "GeForce GTX 1630", "Radeon RX 560 4GB"
+]
