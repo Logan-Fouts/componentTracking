@@ -19,17 +19,20 @@ params = {
         'itemFilter(0).value': 'FixedPrice',
     'itemFilter(1).name': 'Condition',
     'itemFilter(1).value(0)': '1000',
-    'itemFilter(1).value(3)': '2000',
-    'itemFilter(1).value(6)': '3000',
-    'itemFilter(1).value(7)': '4000',
-    'itemFilter(1).value(8)': '5000',
-    'itemFilter(1).value(9)': '6000'
+    'itemFilter(1).value(1)': '2000',
+    'itemFilter(1).value(2)': '3000',
+    'itemFilter(1).value(3)': '4000',
+    'itemFilter(1).value(4)': '5000',
+    'itemFilter(1).value(5)': '6000'
 }
 
 all_prices = {card_name: [] for card_name in card_names}
-banned_words = ['shroud', 'cable', 'bracket', 'Shroud', 'Cable', 'Bracket', 'EMPTY', 'empty', 'Empty', 
-                'Fans', 'fans', 'Fan', 'fan', 'Shield', 'SHIELD', 'shield', 'kit', 'KIT', 'Powerlink',
-                'POWERLINK', 'powerlink', 'BIOS', 'bios']
+banned_words = ['shroud', 'cable', 'bracket', 'Shroud', 'Cable', 'Bracket', 'EMPTY', 'empty', 'Empty',
+                'Shield', 'SHIELD', 'shield', 'kit', 'KIT', 'Powerlink',
+                'POWERLINK', 'powerlink', 'BIOS', 'bios', 'block', 'Block', 'BLOCK', 'backplate',
+                'BACKPLATE', 'Backplate', 'Back Plate', 'Back plate', 'back Plate', 'back plate'
+                'Box-only', 'Mining', 'mining', 'MINING', 'cooling fan', 'graphics card fan',
+                'cooler fan']
 
 # Read the existing CSV file
 csv_filename = 'gpu_info.csv'
@@ -79,8 +82,13 @@ try:
             sorted_prices = sorted(prices, key=lambda x: x[0])
             other_prices = [price for price, _, _, _ in sorted_prices[1:]]
             average_price = sum(other_prices) / len(other_prices) if other_prices else float('inf')
-            lowest_prices[card_name] = sorted_prices[0]
-            #print(f"Lowest price for {card_name} is ${lowest_price:.2f} in {condition} condition.")
+            
+            # Find the first price that is greater than 0.4 * average_price
+            for price, title, url, condition in sorted_prices:
+                if price >= 0.40 * average_price:
+                    lowest_prices[card_name] = (price, title, url, condition)
+                    break
+            
     
     # Update the CSV data with the eBay prices if they are cheaper
     for row in csv_data:
@@ -91,23 +99,15 @@ try:
             if ebay_price < current_price:
                 row['Price ($)'] = f"{ebay_price:,.2f}"
                 row['URL'] = ebay_url
-           
-            
-        # Calculate 'Power Efficiency (FPS/W)'
         fps = float(row['FPS'])
         watts = float(row['W'])
         row['Power Efficiency (FPS/W)'] = f"{(fps / watts) if watts != 0 else float('inf'):.4f}"
-
-        # Calculate 'Price Efficiency (FPS/$)'
         price = float(row['Price ($)'].replace(',', ''))
         row['Price Efficiency (FPS/$)'] = f"{(fps / price) if price != 0 else float('inf'):.4f}"
-
-        # Calculate 'Average Efficiency'
         price_efficiency = float(row['Price Efficiency (FPS/$)'])
         power_efficiency = float(row['Power Efficiency (FPS/W)'])
         row['Average Efficiency'] = f"{(price_efficiency + power_efficiency) / 2:.4f}"
 
-    
     # Write the updated data back to the CSV file
     with open(csv_filename, mode='w', newline='') as file:
         fieldnames = csv_data[0].keys()
