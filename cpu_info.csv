@@ -1,4 +1,4 @@
-Name,Cores,Score,Thread Mark,TDP,Socket,URL
+Name,Cores,Score,Thread Mark,TDP,Socket,Power Efficiency (FPS/W),Price Efficiency (FPS/$),Average Efficiency,Price ($),URL
 AMD Ryzen Threadripper PRO 7995WX,96,"154,671","3,952",350,sTR5,
 AMD Ryzen Threadripper PRO 7985WX,64,"135,597","3,998",350,sTR5,
 AMD Ryzen Threadripper 7980X,64,"134,981","3,988",350,sTR5,
