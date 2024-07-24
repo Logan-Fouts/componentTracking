@@ -6,14 +6,14 @@ app_id = 'WillLaue-Finding-PRD-ac1cfea6d-bbddde16'
 endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1'
 
 # Import graphics card names from gpu.py
-from gpu import graphics_cards as card_names
+from dataBase.gpu import graphics_cards as card_names
 
 params = {
     'Operation-Name': 'findItemsByKeywords',
     'Service-Version': '1.0.0',
     'Security-AppName': app_id,
     'Response-Data-Format': 'XML',
-    'paginationInput.entriesPerPage': 24,
+    'paginationInput.entriesPerPage': 50,
     'sort_by': 'best_match',
     'itemFilter(0).name': 'ListingType',
         'itemFilter(0).value': 'FixedPrice',
@@ -32,7 +32,7 @@ banned_words = ['shroud', 'cable', 'bracket', 'Shroud', 'Cable', 'Bracket', 'EMP
                 'POWERLINK', 'powerlink', 'BIOS', 'bios', 'block', 'Block', 'BLOCK', 'backplate',
                 'BACKPLATE', 'Backplate', 'Back Plate', 'Back plate', 'back Plate', 'back plate'
                 'Box-only', 'Mining', 'mining', 'MINING', 'cooling fan', 'graphics card fan',
-                'cooler fan']
+                'cooler fan', 'box only', 'only fan', 'parts only', 'no gpu', 'heatsink', 'heat sink']
 
 # Read the existing CSV file
 csv_filename = 'gpu_info.csv'
