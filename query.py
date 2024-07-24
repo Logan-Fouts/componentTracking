@@ -10,11 +10,9 @@ from dataBase.gpu import graphics_cards as card_names
 from dataBase.cpu import cpus as cpus
 
 searchGpus = False
-
 searchCpus = True
 
 # Search for either Gpus or Cpus 
-
 if (searchGpus):
     params = {
         'Operation-Name': 'findItemsByKeywords',
@@ -104,9 +102,8 @@ if (searchGpus):
             if card_name in lowest_prices:
                 ebay_price, _, ebay_url, _ = lowest_prices[card_name]
                 current_price = float(row['Price ($)'].replace(',', ''))
-                if ebay_price < current_price:
-                    row['Price ($)'] = f"{ebay_price:,.2f}"
-                    row['URL'] = ebay_url
+                row['Price ($)'] = f"{ebay_price:,.2f}"
+                row['URL'] = ebay_url
             fps = float(row['FPS'])
             watts = float(row['W'])
             row['Power Efficiency (FPS/W)'] = f"{(fps / watts) if watts != 0 else float('inf'):.4f}"
@@ -127,7 +124,6 @@ if (searchGpus):
 
     except Exception as e:
         print(f"An error occurred: {e}")
-
 if (searchCpus):
     params = {
         'Operation-Name': 'findItemsByKeywords',
@@ -148,7 +144,7 @@ if (searchCpus):
     }
 
     all_prices = {cpu: [] for cpu in cpus}
-    banned_words = []
+    banned_words = ['cooling fan', 'untested', 'cooler fan', '1700 Cooler']
 
     # Read the existing CSV file
     csv_filename = 'cpu_info.csv'
@@ -212,9 +208,8 @@ if (searchCpus):
             if cpu in lowest_prices:
                 ebay_price, _, ebay_url, _ = lowest_prices[cpu]
                 current_price = float(row['Price ($)'].replace(',', ''))
-                if ebay_price < current_price:
-                    row['Price ($)'] = f"{ebay_price:,.2f}"
-                    row['URL'] = ebay_url
+                row['Price ($)'] = f"{ebay_price:,.2f}"
+                row['URL'] = ebay_url
             score = float(row['Score'])
             watts = float(row['TDP'])
             row['Power Efficiency (FPS/W)'] = f"{(score / watts) if watts != 0 else float('inf'):.4f}"
