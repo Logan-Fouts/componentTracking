@@ -11,7 +11,7 @@ from dataBase.cpu import cpus as cpus
 
 searchGpus = False
 
-searchCpus = False
+searchCpus = True
 
 # Search for either Gpus or Cpus 
 
@@ -210,7 +210,7 @@ if (searchCpus):
         for row in csv_data:
             cpu = row['Name']
             if cpu in lowest_prices:
-                ebay_price, _, ebay_url, _ = lowest_prices[card_name]
+                ebay_price, _, ebay_url, _ = lowest_prices[cpu]
                 current_price = float(row['Price ($)'].replace(',', ''))
                 if ebay_price < current_price:
                     row['Price ($)'] = f"{ebay_price:,.2f}"
