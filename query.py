@@ -1,232 +1,212 @@
-import requests
 import xml.etree.ElementTree as ET
 import csv
-
-app_id = 'WillLaue-Finding-PRD-ac1cfea6d-bbddde16'
-endpoint = 'https://svcs.ebay.com/services/search/FindingService/v1'
-
-# Import graphics card names from gpu.py
+import asyncio
+from dataclasses import dataclass, field
+from typing import List, Dict
+import aiohttp
 from dataBase.gpu import graphics_cards as card_names
-from dataBase.cpu import cpus as cpus
+from dataBase.cpu import cpus
 
-searchGpus = False
-searchCpus = True
+APP_ID = "WillLaue-Finding-PRD-ac1cfea6d-bbddde16"
+ENDPOINT = "https://svcs.ebay.com/services/search/FindingService/v1"
 
-# Search for either Gpus or Cpus 
-if (searchGpus):
-    params = {
-        'Operation-Name': 'findItemsByKeywords',
-        'Service-Version': '1.0.0',
-        'Security-AppName': app_id,
-        'Response-Data-Format': 'XML',
-        'paginationInput.entriesPerPage': 50,
-        'sort_by': 'best_match',
-        'itemFilter(0).name': 'ListingType',
-            'itemFilter(0).value': 'FixedPrice',
-        'itemFilter(1).name': 'Condition',
-        'itemFilter(1).value(0)': '1000',
-        'itemFilter(1).value(1)': '2000',
-        'itemFilter(1).value(2)': '3000',
-        'itemFilter(1).value(3)': '4000',
-        'itemFilter(1).value(4)': '5000',
-        'itemFilter(1).value(5)': '6000'
-    }
+SEARCHGPUS = False
+SEARCHCPUS = True
 
-    all_prices = {card_name: [] for card_name in card_names}
-    banned_words = ['shroud', 'cable', 'bracket', 'Shroud', 'Cable', 'Bracket', 'EMPTY', 'empty', 'Empty',
-                    'Shield', 'SHIELD', 'shield', 'kit', 'KIT', 'Powerlink',
-                    'POWERLINK', 'powerlink', 'BIOS', 'bios', 'block', 'Block', 'BLOCK', 'backplate',
-                    'BACKPLATE', 'Backplate', 'Back Plate', 'Back plate', 'back Plate', 'back plate'
-                    'Box-only', 'Mining', 'mining', 'MINING', 'cooling fan', 'graphics card fan',
-                    'cooler fan', 'box only', 'only fan', 'parts only', 'no gpu', 'heatsink', 'heat sink']
+banned_words = [
+    "shroud",
+    "cable",
+    "bracket",
+    "empty",
+    "shield",
+    "kit",
+    "powerlink",
+    "bios",
+    "block",
+    "backplate",
+    "back plate",
+    "box-only",
+    "mining",
+    "cooling fan",
+    "graphics card fan",
+    "cooler fan",
+    "box only",
+    "only fan",
+    "parts only",
+    "no gpu",
+    "heatsink",
+    "heat sink",
+    "untested",
+    "1700 Cooler",
+]
 
-    # Read the existing CSV file
-    csv_filename = 'gpu_info.csv'
+params = {
+    "Operation-Name": "findItemsByKeywords",
+    "Service-Version": "1.0.0",
+    "Security-AppName": APP_ID,
+    "Response-Data-Format": "XML",
+    "paginationInput.entriesPerPage": 50,
+    "sort_by": "best_match",
+    "itemFilter(0).name": "ListingType",
+    "itemFilter(0).value": "FixedPrice",
+    "itemFilter(1).name": "Condition",
+    "itemFilter(1).value(0)": "1000",
+    "itemFilter(1).value(1)": "2000",
+    "itemFilter(1).value(2)": "3000",
+    "itemFilter(1).value(3)": "4000",
+    "itemFilter(1).value(4)": "5000",
+    "itemFilter(1).value(5)": "6000",
+}
+
+
+async def fetch_data(session, keyword):
+    """Aync method to fetch info about cards or cpus quickly."""
+
+    params["keywords"] = keyword
+    async with session.get(ENDPOINT, params=params) as response:
+        if response.status != 200:
+            print(f"Request failed with status code {response.status} for {keyword}.")
+            return keyword, []
+        content = await response.text()
+        root = ET.fromstring(content)
+        ns = {"ns": "http://www.ebay.com/marketplace/search/v1/services"}
+        search_result = root.find(".//ns:searchResult", namespaces=ns)
+        if search_result is not None:
+            items = search_result.findall("ns:item", namespaces=ns)
+            results = []
+            for item in items:
+                title = (
+                    item.find("ns:title", namespaces=ns).text
+                    if item.find("ns:title", namespaces=ns) is not None
+                    else "N/A"
+                )
+                if any(
+                    banned_word.lower() in title.lower() for banned_word in banned_words
+                ):
+                    continue
+                price = (
+                    float(
+                        item.find(".//ns:currentPrice", namespaces=ns).text.replace(
+                            ",", ""
+                        )
+                    )
+                    if item.find(".//ns:currentPrice", namespaces=ns) is not None
+                    else float("inf")
+                )
+                url = (
+                    item.find("ns:viewItemURL", namespaces=ns).text
+                    if item.find("ns:viewItemURL", namespaces=ns) is not None
+                    else "N/A"
+                )
+                condition = (
+                    item.find("ns:conditionDisplayName", namespaces=ns).text
+                    if item.find("ns:conditionDisplayName", namespaces=ns) is not None
+                    else "N/A"
+                )
+                results.append((price, title, url, condition))
+            return keyword, results
+        print(f"No 'searchResult' found in the response for {keyword}.")
+        return keyword, []
+
+
+@dataclass
+class GeneralInfo:
+    """Data class to encapsulate general info."""
+
+    csv_filename: str = field(init=False)
+    data_list: List[str] = field(init=False)
+    all_prices: Dict[str, List[float]] = field(init=False)
+    lowest_prices: Dict[str, tuple] = field(default_factory=dict)
+
+    def __post_init__(self):
+        self.csv_filename = "gpu_info.csv" if SEARCHGPUS else "cpu_info.csv"
+        self.data_list = card_names if SEARCHGPUS else cpus
+        self.all_prices = {item: [] for item in self.data_list}
+
+
+def update_csv(gen_info):
+    """Read in csv data and update"""
+
     csv_data = []
-
-    with open(csv_filename, mode='r') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            csv_data.append(row)
-            
-    total_cards = len(card_names)
     try:
-        for index, card_name in enumerate(card_names, start=1):
-            print(f"Processing {index} / {total_cards}: {card_name}")
-            params['keywords'] = card_name
-            
-            # Send request to the eBay Finding API
-            response = requests.get(endpoint, params=params)
-            
-            if response.status_code == 200:
-                # Parse response
-                root = ET.fromstring(response.content)
+        with open(gen_info.csv_filename, mode="r", encoding="utf-8") as file:
+            reader = csv.DictReader(file)
+            for row in reader:
+                csv_data.append(row)
+    except FileNotFoundError:
+        print(f"CSV file '{gen_info.csv_filename}' not found.")
 
-                ns = {'ns': 'http://www.ebay.com/marketplace/search/v1/services'}
-
-                search_result = root.find('.//ns:searchResult', namespaces=ns)
-                if search_result is not None:
-                    items = search_result.findall('ns:item', namespaces=ns)
-                    for item in items:
-                        # Skip items with banned words in the title
-                        title = item.find('ns:title', namespaces=ns).text if item.find('ns:title', namespaces=ns) is not None else 'N/A'
-                        if any(banned_word.lower() in title.lower() for banned_word in banned_words):
-                            continue
-                        price = float(item.find('.//ns:currentPrice', namespaces=ns).text.replace(',', '')) if item.find('.//ns:currentPrice', namespaces=ns) is not None else float('inf')
-                        url = item.find('ns:viewItemURL', namespaces=ns).text if item.find('ns:viewItemURL', namespaces=ns) is not None else 'N/A'
-                        condition = item.find('ns:conditionDisplayName', namespaces=ns).text if item.find('ns:conditionDisplayName', namespaces=ns) is not None else 'N/A'
-                        all_prices[card_name].append((price, title, url, condition))
-                else:
-                    print(f"No 'searchResult' found in the response for {card_name}.")
-            else:
-                print(f"Request failed with status code {response.status_code} for {card_name}.")
-
-        lowest_prices = {}
-        for card_name, prices in all_prices.items():
-            if prices:
-                # Sort by price
-                sorted_prices = sorted(prices, key=lambda x: x[0])
-                other_prices = [price for price, _, _, _ in sorted_prices[1:]]
-                average_price = sum(other_prices) / len(other_prices) if other_prices else float('inf')
-                
-                # Find the first price that is greater than 0.4 * average_price
-                for price, title, url, condition in sorted_prices:
-                    if price >= 0.40 * average_price:
-                        lowest_prices[card_name] = (price, title, url, condition)
-                        break
-                
-        
-        # Update the CSV data with the eBay prices if they are cheaper
+    if csv_data:
         for row in csv_data:
-            card_name = row['Card']
-            if card_name in lowest_prices:
-                ebay_price, _, ebay_url, _ = lowest_prices[card_name]
-                current_price = float(row['Price ($)'].replace(',', ''))
-                row['Price ($)'] = f"{ebay_price:,.2f}"
-                row['URL'] = ebay_url
-            fps = float(row['FPS'])
-            watts = float(row['W'])
-            row['Power Efficiency (FPS/W)'] = f"{(fps / watts) if watts != 0 else float('inf'):.4f}"
-            price = float(row['Price ($)'].replace(',', ''))
-            row['Price Efficiency (FPS/$)'] = f"{(fps / price) if price != 0 else float('inf'):.4f}"
-            price_efficiency = float(row['Price Efficiency (FPS/$)'])
-            power_efficiency = float(row['Power Efficiency (FPS/W)'])
-            row['Average Efficiency'] = f"{(price_efficiency + power_efficiency) / 2:.4f}"
+            name = row["Card"] if SEARCHGPUS else row["Name"]
+            if name in gen_info.lowest_prices:
+                ebay_price, _, ebay_url, _ = gen_info.lowest_prices[name]
+                row["Price ($)"] = f"{ebay_price:,.2f}"
+                row["URL"] = ebay_url
+            fps_or_score = float(row["FPS"]) if SEARCHGPUS else float(row["Score"])
+            watts = float(row["W"]) if SEARCHGPUS else float(row["TDP"])
+            row["Power Efficiency (FPS/W)"] = (
+                f"{(fps_or_score / watts) if watts != 0 else float('inf'):.4f}"
+            )
+            price = float(row["Price ($)"].replace(",", ""))
+            row["Price Efficiency (FPS/$)"] = (
+                f"{(fps_or_score / price) if price != 0 else float('inf'):.4f}"
+            )
+            price_efficiency = float(row["Price Efficiency (FPS/$)"])
+            power_efficiency = float(row["Power Efficiency (FPS/W)"])
+            row["Average Efficiency"] = (
+                f"{(price_efficiency + power_efficiency) / 2:.4f}"
+            )
+            row["Price to Performance Ratio (Score/$)"] = row[
+                "Price Efficiency (FPS/$)"
+            ]
 
-        # Write the updated data back to the CSV file
-        with open(csv_filename, mode='w', newline='') as file:
+        with open(
+            gen_info.csv_filename, mode="w", newline="", encoding="utf-8"
+        ) as file:
             fieldnames = csv_data[0].keys()
             writer = csv.DictWriter(file, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(csv_data)
-        
-        print(f"Results have been written to '{csv_filename}'")
 
-    except Exception as e:
-        print(f"An error occurred: {e}")
-if (searchCpus):
-    params = {
-        'Operation-Name': 'findItemsByKeywords',
-        'Service-Version': '1.0.0',
-        'Security-AppName': app_id,
-        'Response-Data-Format': 'XML',
-        'paginationInput.entriesPerPage': 50,
-        'sort_by': 'best_match',
-        'itemFilter(0).name': 'ListingType',
-            'itemFilter(0).value': 'FixedPrice',
-        'itemFilter(1).name': 'Condition',
-        'itemFilter(1).value(0)': '1000',
-        'itemFilter(1).value(1)': '2000',
-        'itemFilter(1).value(2)': '3000',
-        'itemFilter(1).value(3)': '4000',
-        'itemFilter(1).value(4)': '5000',
-        'itemFilter(1).value(5)': '6000'
-    }
+        print(f"Results have been written to '{gen_info.csv_filename}'")
+    else:
+        print("No data found in the CSV file to process.")
 
-    all_prices = {cpu: [] for cpu in cpus}
-    banned_words = ['cooling fan', 'untested', 'cooler fan', '1700 Cooler']
 
-    # Read the existing CSV file
-    csv_filename = 'cpu_info.csv'
-    csv_data = []
+async def main():
+    """Fetches the info and does some parsing/analysis"""
+    gen_info = GeneralInfo()
 
-    with open(csv_filename, mode='r') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            csv_data.append(row)
-            
-    total_cpus = len(cpus)
-    try:
-        for index, cpu in enumerate(cpus, start=1):
-            print(f"Processing {index} / {total_cpus}: {cpu}")
-            params['keywords'] = cpu
-            
-            # Send request to the eBay Finding API
-            response = requests.get(endpoint, params=params)
-            
-            if response.status_code == 200:
-                # Parse response
-                root = ET.fromstring(response.content)
+    async with aiohttp.ClientSession() as session:
+        tasks = [fetch_data(session, item) for item in gen_info.data_list]
+        results = await asyncio.gather(*tasks)
 
-                ns = {'ns': 'http://www.ebay.com/marketplace/search/v1/services'}
+    for keyword, prices in results:
+        gen_info.all_prices[keyword] = prices
 
-                search_result = root.find('.//ns:searchResult', namespaces=ns)
-                if search_result is not None:
-                    items = search_result.findall('ns:item', namespaces=ns)
-                    for item in items:
-                        # Skip items with banned words in the title
-                        title = item.find('ns:title', namespaces=ns).text if item.find('ns:title', namespaces=ns) is not None else 'N/A'
-                        if any(banned_word.lower() in title.lower() for banned_word in banned_words):
-                            continue
-                        price = float(item.find('.//ns:currentPrice', namespaces=ns).text.replace(',', '')) if item.find('.//ns:currentPrice', namespaces=ns) is not None else float('inf')
-                        url = item.find('ns:viewItemURL', namespaces=ns).text if item.find('ns:viewItemURL', namespaces=ns) is not None else 'N/A'
-                        condition = item.find('ns:conditionDisplayName', namespaces=ns).text if item.find('ns:conditionDisplayName', namespaces=ns) is not None else 'N/A'
-                        all_prices[cpu].append((price, title, url, condition))
-                else:
-                    print(f"No 'searchResult' found in the response for {cpu}.")
-            else:
-                print(f"Request failed with status code {response.status_code} for {cpu}.")
-
+    def _check_low_prices():
+        """Internal function to just clarify a bit"""
         lowest_prices = {}
-        for cpu, prices in all_prices.items():
+        for name, prices in gen_info.all_prices.items():
             if prices:
-                # Sort by price
                 sorted_prices = sorted(prices, key=lambda x: x[0])
                 other_prices = [price for price, _, _, _ in sorted_prices[1:]]
-                average_price = sum(other_prices) / len(other_prices) if other_prices else float('inf')
-                
-                # Find the first price that is greater than 0.4 * average_price
+                average_price = (
+                    sum(other_prices) / len(other_prices)
+                    if other_prices
+                    else float("inf")
+                )
                 for price, title, url, condition in sorted_prices:
                     if price >= 0.40 * average_price:
-                        lowest_prices[cpu] = (price, title, url, condition)
+                        lowest_prices[name] = (price, title, url, condition)
                         break
-                
-        
-        # Update the CSV data with the eBay prices if they are cheaper
-        for row in csv_data:
-            cpu = row['Name']
-            if cpu in lowest_prices:
-                ebay_price, _, ebay_url, _ = lowest_prices[cpu]
-                current_price = float(row['Price ($)'].replace(',', ''))
-                row['Price ($)'] = f"{ebay_price:,.2f}"
-                row['URL'] = ebay_url
-            score = float(row['Score'])
-            watts = float(row['TDP'])
-            row['Power Efficiency (FPS/W)'] = f"{(score / watts) if watts != 0 else float('inf'):.4f}"
-            price = float(row['Price ($)'].replace(',', ''))
-            row['Price Efficiency (FPS/$)'] = f"{(score / price) if price != 0 else float('inf'):.4f}"
-            price_efficiency = float(row['Price Efficiency (FPS/$)'])
-            power_efficiency = float(row['Power Efficiency (FPS/W)'])
-            row['Average Efficiency'] = f"{(price_efficiency + power_efficiency) / 2:.4f}"
+        return lowest_prices
 
-        # Write the updated data back to the CSV file
-        with open(csv_filename, mode='w', newline='') as file:
-            fieldnames = csv_data[0].keys()
-            writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writeheader()
-            writer.writerows(csv_data)
-        
-        print(f"Results have been written to '{csv_filename}'")
+    gen_info.lowest_prices = _check_low_prices()
 
-    except Exception as e:
-        print(f"An error occurred: {e}")
+    update_csv(gen_info)
+
+
+if __name__ == "__main__":
+    asyncio.run(main())
