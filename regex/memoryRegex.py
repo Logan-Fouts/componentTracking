@@ -2432,24 +2432,20 @@ Ramaxel Technology RMSB3400KB06IVF-4800 12GB
 NA
 Corsair CM5S16GM4800A40K2 16GB
   13,360 MB/s
-NA"""  # Replace with your actual data
+NA""" 
 
-# Regex patterns
 name_pattern = r"^(.*?)(?:\s{2,})\d{1,3}(?:,\d{3})*\sMB/s"
 score_pattern = r"(\d{1,3}(?:,\d{3})*)\sMB/s"
 
-# Extract names and scores
 names = re.findall(name_pattern, data, re.MULTILINE)
 scores = re.findall(score_pattern, data, re.MULTILINE)
 
-# Prepare data for CSV
 data_for_csv = []
 for i in range(len(names)):
     name = names[i].strip()
     score = scores[i].strip()
     data_for_csv.append([name, score])
 
-# Output to CSV
 with open('memoryDDR5.csv', mode='w', newline='') as file:
     writer = csv.writer(file)
     writer.writerow(["Name", "Score"])

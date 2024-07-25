@@ -10,8 +10,8 @@ from dataBase.cpu import cpus
 APP_ID = "WillLaue-Finding-PRD-ac1cfea6d-bbddde16"
 ENDPOINT = "https://svcs.ebay.com/services/search/FindingService/v1"
 
-SEARCHGPUS = False
-SEARCHCPUS = True
+SEARCHGPUS = True
+SEARCHCPUS = False
 
 banned_words = [
     "shroud",
@@ -144,22 +144,26 @@ def update_csv(gen_info):
                 row["Price ($)"] = f"{ebay_price:,.2f}"
                 row["URL"] = ebay_url
             fps_or_score = float(row["FPS"]) if SEARCHGPUS else float(row["Score"])
-            watts = float(row["W"]) if SEARCHGPUS else float(row["TDP"])
+            watts = float(row["TDP"])
             row["Power Efficiency (FPS/W)"] = (
                 f"{(fps_or_score / watts) if watts != 0 else float('inf'):.4f}"
             )
             price = float(row["Price ($)"].replace(",", ""))
-            row["Price Efficiency (FPS/$)"] = (
-                f"{(fps_or_score / price) if price != 0 else float('inf'):.4f}"
-            )
-            price_efficiency = float(row["Price Efficiency (FPS/$)"])
-            power_efficiency = float(row["Power Efficiency (FPS/W)"])
+            if SEARCHGPUS:
+                row["Price Efficiency (FPS/$)"] = (
+                    f"{(fps_or_score / price) if price != 0 else float('inf'):.4f}"
+                )
+                price_efficiency = float(row["Price Efficiency (FPS/$)"])
+                power_efficiency = float(row["Power Efficiency (FPS/W)"])
+            if SEARCHCPUS:
+                row["Price Efficiency (Score/$)"] = (
+                    f"{(fps_or_score / price) if price != 0 else float('inf'):.4f}"  
+                )
+                price_efficiency = float(row["Price Efficiency (Score/$)"])
+                power_efficiency = float(row["Power Efficiency (Score/W)"])
             row["Average Efficiency"] = (
                 f"{(price_efficiency + power_efficiency) / 2:.4f}"
             )
-            row["Price to Performance Ratio (Score/$)"] = row[
-                "Price Efficiency (FPS/$)"
-            ]
 
         with open(
             gen_info.csv_filename, mode="w", newline="", encoding="utf-8"
