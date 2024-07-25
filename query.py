@@ -1,6 +1,8 @@
 import xml.etree.ElementTree as ET
 import csv
 import asyncio
+from dataclasses import dataclass, field
+from typing import List, Dict
 import aiohttp
 from dataBase.gpu import graphics_cards as card_names
 from dataBase.cpu import cpus
@@ -8,7 +10,7 @@ from dataBase.cpu import cpus
 APP_ID = "WillLaue-Finding-PRD-ac1cfea6d-bbddde16"
 ENDPOINT = "https://svcs.ebay.com/services/search/FindingService/v1"
 
-SEARCHGPUS = True
+SEARCHGPUS = False
 SEARCHCPUS = True
 
 banned_words = [
@@ -59,6 +61,7 @@ params = {
 
 async def fetch_data(session, keyword):
     """Aync method to fetch info about cards or cpus quickly."""
+
     params["keywords"] = keyword
     async with session.get(ENDPOINT, params=params) as response:
         if response.status != 200:
@@ -106,49 +109,38 @@ async def fetch_data(session, keyword):
         return keyword, []
 
 
-async def main():
-    """Fetches the info and does some parsing/analysis"""
-    csv_filename = "gpu_info.csv" if SEARCHGPUS else "cpu_info.csv"
-    data_list = card_names if SEARCHGPUS else cpus
-    all_prices = {item: [] for item in data_list}
+@dataclass
+class GeneralInfo:
+    """Data class to encapsulate general info."""
 
-    async with aiohttp.ClientSession() as session:
-        tasks = [fetch_data(session, item) for item in data_list]
-        results = await asyncio.gather(*tasks)
+    csv_filename: str = field(init=False)
+    data_list: List[str] = field(init=False)
+    all_prices: Dict[str, List[float]] = field(init=False)
+    lowest_prices: Dict[str, tuple] = field(default_factory=dict)
 
-    for keyword, prices in results:
-        all_prices[keyword] = prices
+    def __post_init__(self):
+        self.csv_filename = "gpu_info.csv" if SEARCHGPUS else "cpu_info.csv"
+        self.data_list = card_names if SEARCHGPUS else cpus
+        self.all_prices = {item: [] for item in self.data_list}
 
-    lowest_prices = {}
-    for name, prices in all_prices.items():
-        if prices:
-            sorted_prices = sorted(prices, key=lambda x: x[0])
-            other_prices = [price for price, _, _, _ in sorted_prices[1:]]
-            average_price = (
-                sum(other_prices) / len(other_prices) if other_prices else float("inf")
-            )
-            for price, title, url, condition in sorted_prices:
-                if price >= 0.40 * average_price:
-                    lowest_prices[name] = (price, title, url, condition)
-                    break
+
+def update_csv(gen_info):
+    """Read in csv data and update"""
 
     csv_data = []
     try:
-        with open(csv_filename, mode="r", encoding="utf-8") as file:
+        with open(gen_info.csv_filename, mode="r", encoding="utf-8") as file:
             reader = csv.DictReader(file)
             for row in reader:
                 csv_data.append(row)
     except FileNotFoundError:
-        print(f"CSV file '{csv_filename}' not found.")
-    except Exception as e:
-        print(f"An error occurred while reading the CSV file: {e}")
+        print(f"CSV file '{gen_info.csv_filename}' not found.")
 
     if csv_data:
         for row in csv_data:
             name = row["Card"] if SEARCHGPUS else row["Name"]
-            if name in lowest_prices:
-                ebay_price, _, ebay_url, _ = lowest_prices[name]
-                current_price = float(row["Price ($)"].replace(",", ""))
+            if name in gen_info.lowest_prices:
+                ebay_price, _, ebay_url, _ = gen_info.lowest_prices[name]
                 row["Price ($)"] = f"{ebay_price:,.2f}"
                 row["URL"] = ebay_url
             fps_or_score = float(row["FPS"]) if SEARCHGPUS else float(row["Score"])
@@ -169,17 +161,52 @@ async def main():
                 "Price Efficiency (FPS/$)"
             ]
 
-        with open(csv_filename, mode="w", newline="", encoding="utf-8") as file:
+        with open(
+            gen_info.csv_filename, mode="w", newline="", encoding="utf-8"
+        ) as file:
             fieldnames = csv_data[0].keys()
             writer = csv.DictWriter(file, fieldnames=fieldnames)
             writer.writeheader()
             writer.writerows(csv_data)
 
-        print(f"Results have been written to '{csv_filename}'")
+        print(f"Results have been written to '{gen_info.csv_filename}'")
     else:
         print("No data found in the CSV file to process.")
 
 
+async def main():
+    """Fetches the info and does some parsing/analysis"""
+    gen_info = GeneralInfo()
+
+    async with aiohttp.ClientSession() as session:
+        tasks = [fetch_data(session, item) for item in gen_info.data_list]
+        results = await asyncio.gather(*tasks)
+
+    for keyword, prices in results:
+        gen_info.all_prices[keyword] = prices
+
+    def _check_low_prices():
+        """Internal function to just clarify a bit"""
+        lowest_prices = {}
+        for name, prices in gen_info.all_prices.items():
+            if prices:
+                sorted_prices = sorted(prices, key=lambda x: x[0])
+                other_prices = [price for price, _, _, _ in sorted_prices[1:]]
+                average_price = (
+                    sum(other_prices) / len(other_prices)
+                    if other_prices
+                    else float("inf")
+                )
+                for price, title, url, condition in sorted_prices:
+                    if price >= 0.40 * average_price:
+                        lowest_prices[name] = (price, title, url, condition)
+                        break
+        return lowest_prices
+
+    gen_info.lowest_prices = _check_low_prices()
+
+    update_csv(gen_info)
+
+
 if __name__ == "__main__":
     asyncio.run(main())
-

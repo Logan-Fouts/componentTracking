@@ -256,5 +256,6 @@ cpus = [
     "Intel Core i5-7600K @ 3.80GHz",
     "AMD Ryzen 3 2200G",
     "Intel Core i3-9100F @ 3.60GHz",
-    "Intel Pentium Gold G7400"
+    "Intel Pentium Gold G7400",
 ]
+
