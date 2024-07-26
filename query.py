@@ -119,7 +119,9 @@ class GeneralInfo:
     lowest_prices: Dict[str, tuple] = field(default_factory=dict)
 
     def __post_init__(self):
-        self.csv_filename = "gpu_info.csv" if SEARCHGPUS else "cpu_info.csv"
+        self.csv_filename = (
+            "Website/CSVs/gpu_info.csv" if SEARCHGPUS else "Website/CSVs/cpu_info.csv"
+        )
         self.data_list = card_names if SEARCHGPUS else cpus
         self.all_prices = {item: [] for item in self.data_list}
 

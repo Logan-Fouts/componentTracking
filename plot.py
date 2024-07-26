@@ -8,13 +8,18 @@ import numpy as np
 class InfoPlot:
     """Provides an easy way for users to visualize the csvs."""
 
-    def __init__(self, component_type=0, split_plot=True):
+    def __init__(self, component_type=0, split_plot=False, save=True):
         self.component_type = component_type
         self.split_plot = split_plot
-        self.file_path = "gpu_info.csv" if component_type == 0 else "cpu_info.csv"
+        self.file_path = (
+            "Website/CSVs/gpu_info.csv"
+            if component_type == 0
+            else "Website/CSVs/cpu_info.csv"
+        )
         self.df = None
         self.df1 = None
         self.df2 = None
+        self.save = save
 
     def _read_data(self):
         self.df = pd.read_csv(self.file_path)
@@ -39,7 +44,7 @@ class InfoPlot:
         return
 
     def _plot_gpu(self, data):
-        _, ax = plt.subplots(figsize=(20, 12))
+        _, ax = plt.subplots(figsize=(16, 12))
         width = 0.8
         space = 2
         indices = np.arange(len(data))
@@ -75,7 +80,11 @@ class InfoPlot:
         ax.legend(fontsize=10)
         plt.tight_layout()
         self._add_value_labels(ax)
-        plt.show()
+
+        if not self.save:
+            plt.show()
+        else:
+            plt.savefig("Website/static/gpu_plot.png")
 
     def _plot_cpu(self, data):
         pass

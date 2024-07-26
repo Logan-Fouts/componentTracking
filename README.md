@@ -40,14 +40,28 @@ pip install -r requirements.txt
 
 ## Usage
 
-### 1. Configure the Script
+### Easiest way
+
+This way runs the quering and the website automatically.
+
+#### 1. Permissons
+
+- `chmod +x run.sh`
+
+#### 2. Run the script
+
+- `./run.sh`
+
+### Alternative way
+
+#### 1. Configure the Script
 
 Before running the script, you may need to set the following options in the `query.py` file:
 
 - `SEARCHGPUS`: Set to `True` if you want to search for GPUs, `False` otherwise.
 - `SEARCHCPUS`: Set to `True` if you want to search for CPUs, `False` otherwise.
 
-### 2. Run the Script
+#### 2. Run the Script
 
 Run the script to update the CSV file with the latest prices and performance data.
 
@@ -55,3 +69,10 @@ Run the script to update the CSV file with the latest prices and performance dat
 python query.py
 ```
 
+#### 3. Run the website
+
+##### 2. Run the Script
+
+1. cd to the Website dir
+2. `python app.py`
+3. Open localhost:5000 in a browser
