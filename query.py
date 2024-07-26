@@ -157,7 +157,7 @@ def update_csv(gen_info):
                 power_efficiency = float(row["Power Efficiency (FPS/W)"])
             if SEARCHCPUS:
                 row["Price Efficiency (Score/$)"] = (
-                    f"{(fps_or_score / price) if price != 0 else float('inf'):.4f}"  
+                    f"{(fps_or_score / price) if price != 0 else float('inf'):.4f}"
                 )
                 price_efficiency = float(row["Price Efficiency (Score/$)"])
                 power_efficiency = float(row["Power Efficiency (Score/W)"])
@@ -214,3 +214,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
