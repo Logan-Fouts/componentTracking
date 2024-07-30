@@ -1,83 +1,83 @@
 Card,Price ($),FPS,VRAM (GB),TDP,Power Efficiency (FPS/W),Price Efficiency (FPS/$),Average Efficiency,URL
-Radeon RX 6750 XT,221.00,102.9,12,250,0.4116,0.4656,0.4386,https://www.ebay.com/itm/XFX-Speedster-QICK319-Radeon-RX-6750XT-CORE-Gaming-Graphics-Card-12GB-GDDR6-/296519038224
-GeForce RTX 3070 Ti,249.00,104,8,290,0.3586,0.4177,0.3881,https://www.ebay.com/itm/GIGABYTE-GeForce-RTX-3070-GAMING-OC-8GB-GDDR6-Graphics-Card-/235673585894
-Radeon RX 6800 XT,299.99,122.7,16,300,0.4090,0.4090,0.4090,https://www.ebay.com/itm/AMD-Radeon-RX-6800-XT-GDDR6-16GB-72-Compute-Units-Gaming-Graphics-Card-/116193499678
-GeForce RTX 3080,300.00,117,10,320,0.3656,0.3900,0.3778,https://www.ebay.com/itm/GIGABYTE-GeForce-RTX-3080-TURBO-10GB-GDDR6X-Graphics-Card-server-ready-/315388181856
-Radeon RX 6800,299.99,114.6,16,250,0.4584,0.3820,0.4202,https://www.ebay.com/itm/AMD-Radeon-RX-6800-XT-GDDR6-16GB-72-Compute-Units-Gaming-Graphics-Card-/116193499678
-Radeon RX 7700 XT,329.99,116.1,12,245,0.4739,0.3518,0.4128,https://www.ebay.com/itm/PowerColor-Fighter-AMD-Radeon-RX-7700-XT-12GB-GDDR6-Graphics-Card-/315418869027
-GeForce RTX 3080 Ti,379.95,123.9,12,350,0.3540,0.3261,0.3400,https://www.ebay.com/itm/NVIDIA-GeForce-RTX-3080-Founders-Edition-10GB-GDDR6X-Graphics-Card-P-N-PG133A-/156322194148
-GeForce RTX 3080 12GB,375.00,122.1,12,400,0.3052,0.3256,0.3154,https://www.ebay.com/itm/GIGABYTE-GeForce-RTX-3080-GAMING-OC-10GB-GDDR6X-Graphics-Card-/145859752684
-Radeon RX 7800 XT,419.00,129.3,16,263,0.4916,0.3086,0.4001,https://www.ebay.com/itm/AMD-Radeon-7800XT-16GB-GDDR6-XFX-SPEEDSTER-QICK319-PCIe-4-0-Video-Graphics-Card-/186342514152
-GeForce RTX 4060 Ti,220.00,100.4,8,160,0.6275,0.4564,0.5419,https://www.ebay.com/itm/ZOTAC-GAMING-GeForce-RTX-4060-Ti-16GB-AMP-DLSS-3-16GB-GDDR6-Graphics-Card-GPU-/166893218445
-Radeon RX 6900 XT,399.99,124.6,16,300,0.4153,0.3115,0.3634,https://www.ebay.com/itm/PowerColor-Red-Devil-AMD-Radeon-RX-6900-XT-16GB-GDDR6-Graphics-Card-/285940285695
-GeForce RTX 4070 Super,472.49,134.2,12,220,0.6100,0.2840,0.4470,https://www.ebay.com/itm/Zotac-Twin-Edge-OC-GeForce-RTX-4070-Super-12GB-ZT-D40700H-10M-Used-/395524505030
-Radeon RX 7900 GRE,499.00,135.8,16,260,0.5223,0.2721,0.3972,https://www.ebay.com/itm/ASRock-Challenger-Radeon-RX-7900-GRE-16GB-GDDR6-PCIe-4-0-Video-Graphic-Card-GPU-/204799079627
-GeForce RTX 4060 Ti 16GB,220.00,100.6,16,160,0.6287,0.4573,0.5430,https://www.ebay.com/itm/ZOTAC-GAMING-GeForce-RTX-4060-Ti-16GB-AMP-DLSS-3-16GB-GDDR6-Graphics-Card-GPU-/166893218445
-GeForce RTX 4070,499.00,122,12,200,0.6100,0.2445,0.4273,https://www.ebay.com/itm/Geforce-RTX-4070-WINDFORCE-OC-12G-Graphics-Card-3X-WINDFORCE-Fans-12GB-192-Bit-/285983041795
-GeForce RTX 4070 Ti,535.81,138.3,12,285,0.4853,0.2581,0.3717,https://www.ebay.com/itm/PNY-GeForce-RTX-4070-Ti-VERTO-Triple-Fan-12GB-GDDR6X-GPU-VCG4070T12TFXPB1-Read-/395461069506
-Radeon RX 7900 XT,625.00,143.9,20,315,0.4568,0.2302,0.3435,https://www.ebay.com/itm/XFX-Speedster-MERC-310-AMD-Radeon-RX-7900-XT-Black-Edition-20GB-GDDR6-/235482516415
-GeForce RTX 3090 Ti,689.00,130.5,24,450,0.2900,0.1894,0.2397,https://www.ebay.com/itm/EVGA-NVIDIA-GeForce-RTX-3090-FTW3-Ultra-24GB-GDDR6X-Graphics-Card-24G-P5-3987-KR-/156328396714
-GeForce RTX 4070 Ti Super,699.99,142.3,16,285,0.4993,0.2033,0.3513,https://www.ebay.com/itm/PNY-GeForce-RTX-4070-Ti-SUPER-16GB-XLR8-Gaming-VERTO-EPIC-X-NEW-SEALED-/305585201854
-GeForce RTX 3090,640.00,125.5,24,350,0.3586,0.1961,0.2773,https://www.ebay.com/itm/ZOTAC-GAMING-GeForce-RTX-3090-Trinity-OC-24GB-GDDR6X-Graphics-Card-/305698539147
-Radeon RX 6950 XT,574.44,130.5,16,335,0.3896,0.2272,0.3084,https://www.ebay.com/itm/ASRock-AMD-Radeon-RX-6950-XT-OC-Formula-/166617258787
-Radeon RX 7900 XTX,699.00,149,24,355,0.4197,0.2132,0.3165,https://www.ebay.com/itm/ASRock-AMD-Radeon-RX-7900-XTX-Taichi-OC-24GB-GDDR6-Graphics-Card-/186477920256
-GeForce RTX 4080,829.99,147,16,320,0.4594,0.1771,0.3182,https://www.ebay.com/itm/Nvidia-Geforce-Rtx-4080-16gb-Gddr6-Graphics-Card-Triple-Fan-/365038303999
-GeForce RTX 4080 Super,849.95,148.3,16,320,0.4634,0.1745,0.3189,https://www.ebay.com/itm/Zotac-Gaming-GeForce-RTX-4080-Super-AMP-Extreme-AIRO-16GB-ZT-D40820B-10P-/196450659871
-GeForce RTX 4090,"1,450.00",154.1,24,450,0.3424,0.1063,0.2243,https://www.ebay.com/itm/ASUS-GeForce-RTX-4090-24GB-TUF-GAMING-OC-GDDR6X-Video-Graphics-Card-GPU-/266927504980
-Radeon RX 570 4GB,35.00,28.1,4,150,0.1873,0.8029,0.4951,https://www.ebay.com/itm/MSI-Radeon-AMD-RX-570-4GB-GDDR5-Gaming-Graphics-Card-/116270845862
-GeForce GTX 1060 6GB,40.00,32.1,6,120,0.2675,0.8025,0.5350,https://www.ebay.com/itm/MSI-GeForce-GTX-1060-V1-OC-GDDR5-6GB-Gaming-Graphics-Card-/355904219647
-GeForce GTX 1070,60.00,44.7,8,150,0.2980,0.7450,0.5215,https://www.ebay.com/itm/ZOTAC-GeForce-GTX-1070-AMP-Edition-8GB-GDDR5-Graphics-Card-ZTP10700E10S-/126593714503
-GeForce GTX 970,30.00,26.5,4,145,0.1828,0.8833,0.5331,https://www.ebay.com/itm/EVGA-GeForce-GTX-970-4-GB-PCIe-X16-Graphics-Card-/375550875756
-Radeon RX Vega 64,89.95,56.7,8,295,0.1922,0.6304,0.4113,https://www.ebay.com/itm/MSI-Radeon-RX-Vega-56-Flashed-64-New-Liquid-Metals-Paste-And-Pads-/126545303497
 Radeon RX Vega 56,48.79,50.6,8,210,0.2410,1.0371,0.6390,https://www.ebay.com/itm/xfx-radeon-rx-vega-56-8gb-/276568458843
-GeForce GTX 1650,49.99,27,4,75,0.3600,0.5401,0.4501,https://www.ebay.com/itm/ASUS-Phoenix-NVIDIA-GeForce-GTX-1650-OC-Edition-4GB-/285985098828
-Radeon RX 5700,109.99,64.5,8,180,0.3583,0.5864,0.4724,https://www.ebay.com/itm/AMD-Radeon-RX-5700-8GB-GDDR6-Graphics-Card-NOTE-Bad-HDMI-/116236301951
-GeForce GTX 1080,99.00,53,8,180,0.2944,0.5354,0.4149,https://www.ebay.com/itm/Gigabyte-GeForce-GTX-1080-8GB-GDDR5-Server-GPU-Graphics-Card-GV-N1080NC-8GD-/296201973008
 Radeon RX 580 8GB,34.99,35.3,8,185,0.1908,1.0089,0.5998,https://www.ebay.com/itm/MSI-Radeon-Armor-RX-580-4GB-GDDR5-Graphics-Card-/186599710991
-Radeon RX 5700 XT,125.00,73.3,8,225,0.3258,0.5864,0.4561,https://www.ebay.com/itm/AMD-Radeon-RX-5700-XT-8GB-GDDR6-Graphics-Card-Dell-4FCCX-/196372452695
-GeForce GTX 980,39.99,28.9,4,165,0.1752,0.7227,0.4490,https://www.ebay.com/itm/Gigabyte-GTX-980-4GB-GDDR5-Windforce-Edition-GV-R928WF3OC-3GD-Graphics-Card-/405132119938
-GeForce GTX 1070 Ti,79.00,51.1,8,180,0.2839,0.6468,0.4654,https://www.ebay.com/itm/GIGABYTE-GeForce-GTX-1070-8GB-GDDR5-PCI-Express-3-0-x16-SLI-Support-ATX-Video-/226267342785
+GeForce GTX 970,30.00,26.5,4,145,0.1828,0.8833,0.5331,https://www.ebay.com/itm/EVGA-GeForce-GTX-970-4-GB-PCIe-X16-Graphics-Card-/375550875756
+Radeon RX 570 4GB,35.00,28.1,4,150,0.1873,0.8029,0.4951,https://www.ebay.com/itm/MSI-Radeon-AMD-RX-570-4GB-GDDR5-Gaming-Graphics-Card-/116270845862
+GeForce GTX 1060 6GB,42.50,32.1,6,120,0.2675,0.7553,0.5114,https://www.ebay.com/itm/MSI-NVIDIA-GeForce-GTX-1060-3GB-GDDR5-Graphics-Card-GTX10603GTOC-/296598227464
+GeForce GTX 1070,60.00,44.7,8,150,0.2980,0.7450,0.5215,https://www.ebay.com/itm/ZOTAC-GeForce-GTX-1070-AMP-Edition-8GB-GDDR5-Graphics-Card-ZTP10700E10S-/126601158364
+GeForce GTX 980,45.00,28.9,4,165,0.1752,0.6422,0.4087,https://www.ebay.com/itm/GeForce-GTX-980-Gigabyte-GAMING-4GD-NVIDIA-GeForce-GTX-980-G1-4GB-/235611142671
+GeForce GTX 1070 Ti,75.00,51.1,8,180,0.2839,0.6813,0.4826,https://www.ebay.com/itm/ZOTAC-NVIDIA-GEFORCE-GTX-1070-Ti-MINI-8GB-GDR5-/315610795435
+Radeon RX Vega 64,89.95,56.7,8,295,0.1922,0.6304,0.4113,https://www.ebay.com/itm/MSI-Radeon-RX-Vega-56-Flashed-64-New-Liquid-Metals-Paste-And-Pads-/126545303497
 Radeon RX 5600 XT,96.00,57.8,8,160,0.3612,0.6021,0.4817,https://www.ebay.com/itm/MSI-Radeon-RX-5600-XT-GAMING-MX-GDDR6-Graphics-Card-/116270574033
-GeForce RTX 2060 Super,125.00,65.5,8,175,0.3743,0.5240,0.4492,https://www.ebay.com/itm/ASUS-Turbo-GeForce-RTX-2060-SUPER-EVO-8GB-GDDR6-Graphics-Card-/405100537038
-GeForce RTX 2080 Super,149.99,86,8,250,0.3440,0.5734,0.4587,https://www.ebay.com/itm/PNY-GeForce-RTX-2080-Super-8GB-GDDR6-Video-Graphics-Card-no-plate-/256507805699
-Radeon RX 590,79.99,39.3,8,225,0.1747,0.4913,0.3330,https://www.ebay.com/itm/Has-Issues-See-Description-XFX-AMD-Radeon-RX-590-8GB-Graphics-Card-/285984652375
-GeForce GTX 1660 Super,90.00,46.8,6,125,0.3744,0.5200,0.4472,https://www.ebay.com/itm/Maxsun-MS-GeForce-GTX-1660-Super-Graphics-Card-/296595180132
 Radeon R9 390,49.95,29.8,8,275,0.1084,0.5966,0.3525,https://www.ebay.com/itm/MSI-AMD-R9-390X-Gaming-8GB-graphics-card-/116263203708
-GeForce GTX 1660,85.00,42.6,6,120,0.3550,0.5012,0.4281,https://www.ebay.com/itm/Nvidia-geforce-gtx-1660-ti-graphics-card-/204903180812
+Radeon RX 5700,109.99,64.5,8,180,0.3583,0.5864,0.4724,https://www.ebay.com/itm/AMD-Radeon-RX-5700-8GB-GDDR6-Graphics-Card-NOTE-Bad-HDMI-/116236301951
+Radeon RX 5700 XT,125.00,73.3,8,225,0.3258,0.5864,0.4561,https://www.ebay.com/itm/AMD-Radeon-RX-5700-XT-8GB-GDDR6-Graphics-Card-Dell-4FCCX-/196372452695
+GeForce GTX 1650 GDDR6,49.99,28.8,4,75,0.3840,0.5761,0.4800,https://www.ebay.com/itm/ASUS-Phoenix-NVIDIA-GeForce-GTX-1650-OC-Edition-4GB-/285985098828
+GeForce RTX 2080 Super,149.99,86,8,250,0.3440,0.5734,0.4587,https://www.ebay.com/itm/PNY-GeForce-RTX-2080-Super-8GB-GDDR6-Video-Graphics-Card-no-plate-/256507805699
 GeForce GTX 1660 Ti,84.99,46.6,6,120,0.3883,0.5483,0.4683,https://www.ebay.com/itm/EVGA-06G-P4-1667-KR-GeForce-GTX-1660-Ti-6-GB-GDDR5-Graphic-Card-/326212932700
+GeForce GTX 1650,49.99,27,4,75,0.3600,0.5401,0.4501,https://www.ebay.com/itm/ASUS-Phoenix-NVIDIA-GeForce-GTX-1650-OC-Edition-4GB-/285985098828
+GeForce GTX 1080,99.00,53,8,180,0.2944,0.5354,0.4149,https://www.ebay.com/itm/Gigabyte-GeForce-GTX-1080-8GB-GDDR5-Server-GPU-Graphics-Card-GV-N1080NC-8GD-/296201973008
+GeForce RTX 2060 Super,125.00,65.5,8,175,0.3743,0.5240,0.4492,https://www.ebay.com/itm/ASUS-Turbo-GeForce-RTX-2060-SUPER-EVO-8GB-GDDR6-Graphics-Card-/405100537038
 GeForce GTX 980 Ti,69.00,35.9,6,250,0.1436,0.5203,0.3319,https://www.ebay.com/itm/EVGA-GeForce-GTX-980-Ti-FTW-6GB-GDDR5-Video-Card-/276570817866
+GeForce GTX 1660 Super,82.00,46.8,6,125,0.3744,0.5707,0.4726,https://www.ebay.com/itm/GIGABYTE-GeForce-GTX-1660-SUPER-OC-GDDR6-Graphics-Card-6GB-/235675147805
+GeForce RTX 2070 Super,150.00,77.4,8,215,0.3600,0.5160,0.4380,https://www.ebay.com/itm/USED-Nvidia-Galax-RTX-2070-8G-super-graphic-card-/387242905760
 Radeon RX 6500 XT,59.99,30.6,4,107,0.2860,0.5101,0.3981,https://www.ebay.com/itm/PowerColor-AMD-Radeon-RX-6500-XT-Graphics-Card-4GB-GDDR6-AXRX-6500XT-4GBD6-3DH-/325836947251
+GeForce GTX 1660,82.00,42.6,6,120,0.3550,0.5195,0.4372,https://www.ebay.com/itm/GIGABYTE-GeForce-GTX-1660-SUPER-OC-GDDR6-Graphics-Card-6GB-/235675147805
 GeForce RTX 2070,139.99,69.8,8,175,0.3989,0.4986,0.4487,https://www.ebay.com/itm/Dell-NVIDIA-GeForce-RTX-2070-8GB-GDDR6-Graphics-Video-Card-DP-N-JK88G-/166881019064
 Radeon RX 6600 XT,149.99,74.7,8,160,0.4669,0.4980,0.4824,https://www.ebay.com/itm/Dell-Radeon-RX-6600-XT-8GB-8G-128-bit-GDDR6-PCI-E-4-0-AMD-Video-Card-/166881017070
-GeForce RTX 2070 Super,150.00,77.4,8,215,0.3600,0.5160,0.4380,https://www.ebay.com/itm/USED-Nvidia-Galax-RTX-2070-8G-super-graphic-card-/387242905760
+Radeon RX 6700 XT,225.00,99.1,12,230,0.4309,0.4404,0.4356,https://www.ebay.com/itm/AMD-Radeon-RX-6700-XT-12GB-GDDR6-Graphics-Card-/394201465736
+Radeon RX 590,79.99,39.3,8,225,0.1747,0.4913,0.3330,https://www.ebay.com/itm/Has-Issues-See-Description-XFX-AMD-Radeon-RX-590-8GB-Graphics-Card-/285984652375
+GeForce RTX 2060,124.94,55.5,6,160,0.3469,0.4442,0.3955,https://www.ebay.com/itm/ASUS-Dual-GeForce-RTX-2060-OC-EVO-6GB-GDDR6-Video-Card-/256586676135
 GeForce RTX 2080 Ti,199.95,96.3,11,250,0.3852,0.4816,0.4334,https://www.ebay.com/itm/PNY-RTX-2080ti-11Gb-GDDR6-Blower-Edition-GPU-Needs-Repair-/196511515157
-GeForce GTX 1080 Ti,149.95,66.4,11,250,0.2656,0.4428,0.3542,https://www.ebay.com/itm/NO-DISPLAYPORT-READ-PNY-NVIDIA-GeForce-GTX-1080-Ti-11GB-GDDR5X-Graphics-Card-/166882841815
-Intel Arc A750,155.27,70.8,8,225,0.3147,0.4560,0.3853,https://www.ebay.com/itm/Intel-Arc-A750-Limited-Edition-8GB-GDDR6-Graphics-Card-Used-Please-Read-/387082844522
+GeForce RTX 2080,175.00,82.5,8,215,0.3837,0.4714,0.4275,https://www.ebay.com/itm/RTX-GeForce-2080-Video-Card-Alienware-Dell-8GB-Tested-Working-MSI-Nvidia-/355909873987
 Radeon R9 Fury X,75.00,35.2,4,275,0.1280,0.4693,0.2986,https://www.ebay.com/itm/Gigabyte-AMD-Radeon-R9-Fury-4GB-GV-R9FURYWF3OC-4GD-/395481723758
+Radeon RX 5500 XT 8GB,84.99,39.7,8,130,0.3054,0.4671,0.3862,https://www.ebay.com/itm/XFX-Radeon-RX-5500-XT-8GB-GDDR6-Graphics-Card-RX-55XT8D-/204897274216
 Radeon RX 6600,140.00,65.2,8,132,0.4939,0.4657,0.4798,https://www.ebay.com/itm/ASRock-RX-6600-CLD-Challenger-D-8GB-GDDR6-Graphics-Card-90-GA2RZZ-00UANF-/186579345916
+Radeon RX 6750 XT,221.00,102.9,12,250,0.4116,0.4656,0.4386,https://www.ebay.com/itm/XFX-Speedster-QICK319-Radeon-RX-6750XT-CORE-Gaming-Graphics-Card-12GB-GDDR6-/296519038224
+GeForce RTX 4060 Ti 16GB,374.97,100.6,16,160,0.6287,0.2683,0.4485,https://www.ebay.com/itm/PNY-NVIDIA-GeForce-RTX-4060-Ti-GDDR6-16GB-Graphics-Card-GPU-VCG4060T16DFXPB1-/145905544742
+GeForce RTX 4060 Ti,314.97,100.4,8,160,0.6275,0.3188,0.4731,https://www.ebay.com/itm/GIGABYTE-NVIDIA-GEFORCE-RTX-4060-Ti-OC-GDDR6-8GB-Graphics-Card-GV-N460TWF2OC-8GD-/126590241672
+Intel Arc A750,155.27,70.8,8,225,0.3147,0.4560,0.3853,https://www.ebay.com/itm/Intel-Arc-A750-Limited-Edition-8GB-GDDR6-Graphics-Card-Used-Please-Read-/387082844522
 GeForce RTX 3060 Ti,199.00,90.7,8,200,0.4535,0.4558,0.4546,https://www.ebay.com/itm/ASUS-NVIDIA-GeForce-RTX-3060-ti-8gb-/266925439654
 GeForce GTX 1650 Super,75.00,33.9,4,100,0.3390,0.4520,0.3955,https://www.ebay.com/itm/HP-nVidia-GeForce-GTX-1650-GTX1650-Super-4GB-GDDR6-PCIe-x16-TPC-F003G-L8381-/186412663220
-Radeon RX 6700 XT,200.00,99.1,12,230,0.4309,0.4955,0.4632,https://www.ebay.com/itm/Dell-AMD-RADEON-RX-6700-XT-12GB-GDDR6-GRAPHICS-CARD-07RR0M-/256587425906
-GeForce RTX 2060,115.00,55.5,6,160,0.3469,0.4826,0.4147,https://www.ebay.com/itm/EVGA-GeForce-RTX-2060-KO-ULTRA-GAMING-WITH-BOX-/315605040307
-GeForce GTX 1650 GDDR6,49.99,28.8,4,75,0.3840,0.5761,0.4800,https://www.ebay.com/itm/ASUS-Phoenix-NVIDIA-GeForce-GTX-1650-OC-Edition-4GB-/285985098828
-GeForce GTX 1050 Ti,49.00,19.8,4,75,0.2640,0.4041,0.3341,https://www.ebay.com/itm/MSI-GeForce-GTX-1050-Ti-4GT-OC-4GB-GDDR5-PCIe-x16-Graphics-Card-Tested-Working-/375560930677
-GeForce RTX 2080,175.00,82.5,8,215,0.3837,0.4714,0.4275,https://www.ebay.com/itm/RTX-GeForce-2080-Video-Card-Alienware-Dell-8GB-Tested-Working-MSI-Nvidia-/355909873987
-Radeon RX 5500 XT 8GB,84.99,39.7,8,130,0.3054,0.4671,0.3862,https://www.ebay.com/itm/XFX-Radeon-RX-5500-XT-8GB-GDDR6-Graphics-Card-RX-55XT8D-/204897274216
-Radeon RX 7600,200.00,82,8,165,0.4970,0.4100,0.4535,https://www.ebay.com/itm/XFX-Speedster-SWFT-210-AMD-Radeon-RX-7600-Core-Gaming-8GB-GDDR6-Graphics-Card-/364907905634
-Radeon RX 6650 XT,185.00,77.7,8,180,0.4317,0.4200,0.4258,https://www.ebay.com/itm/Asrock-Radeon-Rx-6650xt-Challenger-/355907208934
+GeForce GTX 1080 Ti,149.95,66.4,11,250,0.2656,0.4428,0.3542,https://www.ebay.com/itm/NO-DISPLAYPORT-READ-PNY-NVIDIA-GeForce-GTX-1080-Ti-11GB-GDDR5X-Graphics-Card-/166882841815
+Radeon RX 6650 XT,183.99,77.7,8,180,0.4317,0.4223,0.4270,https://www.ebay.com/itm/MSI-Radeon-RX-6650-XT-MECH-2X-8G-OC-GPU-/116228759917
+GeForce RTX 3070 Ti,249.00,104,8,290,0.3586,0.4177,0.3881,https://www.ebay.com/itm/GIGABYTE-GeForce-RTX-3070-GAMING-OC-8GB-GDDR6-Graphics-Card-/235673585894
 GeForce RTX 3070,239.99,98.8,8,220,0.4491,0.4117,0.4304,https://www.ebay.com/itm/NVIDIA-GeForce-RTX-3070-8GB-GDDR6-Graphics-Card-Blower-Note-Loud-Fans-/266915162631
+Radeon RX 7600,200.00,82,8,165,0.4970,0.4100,0.4535,https://www.ebay.com/itm/XFX-Speedster-SWFT-210-AMD-Radeon-RX-7600-Core-Gaming-8GB-GDDR6-Graphics-Card-/364907905634
+Radeon RX 6800 XT,299.99,122.7,16,300,0.4090,0.4090,0.4090,https://www.ebay.com/itm/AMD-Radeon-RX-6800-XT-GDDR6-16GB-72-Compute-Units-Gaming-Graphics-Card-/116193499678
+GeForce GTX 1050 Ti,49.00,19.8,4,75,0.2640,0.4041,0.3341,https://www.ebay.com/itm/MSI-GeForce-GTX-1050-Ti-4GT-OC-4GB-GDDR5-PCIe-x16-Graphics-Card-Tested-Working-/375560930677
+GeForce RTX 3080,300.00,117,10,320,0.3656,0.3900,0.3778,https://www.ebay.com/itm/GIGABYTE-GeForce-RTX-3080-TURBO-10GB-GDDR6X-Graphics-Card-server-ready-/315388181856
+GeForce RTX 4060,149.00,84.9,8,115,0.7383,0.5698,0.6541,https://www.ebay.com/itm/Dell-NVIDIA-GeForce-RTX-4060-8GB-GDDR6-Graphics-Card-1YXVY-/256587727033
+Radeon RX 6800,299.99,114.6,16,250,0.4584,0.3820,0.4202,https://www.ebay.com/itm/AMD-Radeon-RX-6800-XT-GDDR6-16GB-72-Compute-Units-Gaming-Graphics-Card-/116193499678
 Radeon RX 560 4GB,38.99,14.7,4,70,0.2100,0.3770,0.2935,https://www.ebay.com/itm/ASUS-Radeon-RX-560-2GB-GDDR5-Graphics-Card-RX560-02G-/166760172841
+GeForce RTX 3060,201.00,72.3,12,170,0.4253,0.3597,0.3925,https://www.ebay.com/itm/EVGA-GeForce-RTX-3060-XC-GAMING-12GB-/355909704489
 Radeon VII,185.00,69.5,16,300,0.2317,0.3757,0.3037,https://www.ebay.com/itm/AMD-Radeon-Instinct-Mi50-Accelerator-16GB-HBM2-Radeon-VII-/335459926086
-GeForce RTX 3060,192.00,72.3,12,170,0.4253,0.3766,0.4010,https://www.ebay.com/itm/PNY-NVIDIA-GeForce-RTX-3060-12GB-GDDR6-Graphics-Card-VCG306012DFBPB1-/315607079087
-GeForce RTX 3050,139.99,51.9,8,130,0.3992,0.3707,0.3850,https://www.ebay.com/itm/MSI-GeForce-RTX-3050-VENTUS-2X-XS-8G-OC-Graphics-Card-GPU-/365038290389
-Radeon RX 5500 XT 4GB,89.95,33.3,4,130,0.2562,0.3702,0.3132,https://www.ebay.com/itm/ASRock-AMD-Radeon-RX-5500-XT-Challenger-D-4GB-OC-4GB-RX-5500-XT-Black-Fair-/145637327277
-Intel Arc A770 8GB,228.16,75.3,8,225,0.3347,0.3300,0.3324,https://www.ebay.com/itm/ASRock-Arc-A770-Phantom-D-8GB-OC-Graphics-Card-A770-PGD-8GO-Good-Condition-/305593619146
-Intel Arc A770 16GB,251.99,76.9,16,225,0.3418,0.3052,0.3235,https://www.ebay.com/itm/Acer-Predator-Graphic-Card-BiFrost-Intel-Arc-A770-2-20GHz-OC-/266390922629
-GeForce RTX 4060,220.00,84.9,8,115,0.7383,0.3859,0.5621,https://www.ebay.com/itm/ZOTAC-GAMING-GeForce-RTX-4060-Ti-16GB-AMP-DLSS-3-16GB-GDDR6-Graphics-Card-GPU-/166893218445
-Radeon RX 7600 XT,300.00,91.9,16,190,0.4837,0.3063,0.3950,https://www.ebay.com/itm/XFX-RX-76TSWFTFP-SPEEDSTER-SWFT210-RADEON-RX-7600XT-CORE-Gaming-Graphics-Card-/176419732057
-Radeon RX 6700 10GB,249.99,86.1,10,175,0.4920,0.3444,0.4182,https://www.ebay.com/itm/Tested-Working-AMD-XFX-Radeon-RX-6700-10GB-GDDR6-Gaming-GPU-Graphics-Card-/326152601290
 Radeon RX 6400,64.99,24.1,4,53,0.4547,0.3708,0.4128,https://www.ebay.com/itm/ASRock-Challenger-AMD-Radeon-RX-6400-CLI-4GB-GDDR6-Graphics-card-Video-Card-GPU-/325889547745
+GeForce RTX 3050,149.99,51.9,8,130,0.3992,0.3460,0.3726,https://www.ebay.com/itm/GIGABYTE-Nvidia-GeForce-RTX-3050-OC-8GB-GDDR6-Graphics-Card-GPU-Video-Card-/326108042483
+Radeon RX 5500 XT 4GB,79.99,33.3,4,130,0.2562,0.4163,0.3362,https://www.ebay.com/itm/HP-Radeon-RX-5500-XT-4GB-GDDR6-Graphics-Card-L66151-001-/387215328814
+Radeon RX 7700 XT,329.99,116.1,12,245,0.4739,0.3518,0.4128,https://www.ebay.com/itm/PowerColor-Fighter-AMD-Radeon-RX-7700-XT-12GB-GDDR6-Graphics-Card-/315418869027
+Radeon RX 6700 10GB,249.99,86.1,10,175,0.4920,0.3444,0.4182,https://www.ebay.com/itm/Tested-Working-AMD-XFX-Radeon-RX-6700-10GB-GDDR6-Gaming-GPU-Graphics-Card-/326152601290
+Intel Arc A770 8GB,228.16,75.3,8,225,0.3347,0.3300,0.3324,https://www.ebay.com/itm/ASRock-Arc-A770-Phantom-D-8GB-OC-Graphics-Card-A770-PGD-8GO-Good-Condition-/305593619146
+GeForce RTX 3080 Ti,379.95,123.9,12,350,0.3540,0.3261,0.3400,https://www.ebay.com/itm/NVIDIA-GeForce-RTX-3080-Founders-Edition-10GB-GDDR6X-Graphics-Card-P-N-PG133A-/156322194148
+GeForce RTX 3080 12GB,375.00,122.1,12,400,0.3052,0.3256,0.3154,https://www.ebay.com/itm/GIGABYTE-GeForce-RTX-3080-GAMING-OC-10GB-GDDR6X-Graphics-Card-/145859752684
+Radeon RX 6900 XT,399.99,124.6,16,300,0.4153,0.3115,0.3634,https://www.ebay.com/itm/PowerColor-Red-Devil-AMD-Radeon-RX-6900-XT-16GB-GDDR6-Graphics-Card-/285940285695
+Radeon RX 7800 XT,400.00,129.3,16,263,0.4916,0.3233,0.4074,https://www.ebay.com/itm/XFX-Speedster-QICK-319-Radeon-RX-7800-XT-Core-Edition-16GB-GDDR6-Graphics-Card-/186602250964
+Radeon RX 7600 XT,300.00,91.9,16,190,0.4837,0.3063,0.3950,https://www.ebay.com/itm/XFX-RX-76TSWFTFP-SPEEDSTER-SWFT210-RADEON-RX-7600XT-CORE-Gaming-Graphics-Card-/176419732057
+Intel Arc A770 16GB,251.99,76.9,16,225,0.3418,0.3052,0.3235,https://www.ebay.com/itm/Acer-Predator-Graphic-Card-BiFrost-Intel-Arc-A770-2-20GHz-OC-/266390922629
 Intel Arc A380,99.95,28.4,6,75,0.3787,0.2841,0.3314,https://www.ebay.com/itm/Sparkle-Intel-Arc-A380-ELF-6GB-GDDR6-Single-Fan-SA380E-6G-SA380E-6G-/135087674322
-GeForce GTX 1630,129.99,16.9,4,75,0.2253,0.1300,0.1777,https://www.ebay.com/itm/Factory-Refurbished-GIGABYTE-GTX-1630-4GB-GV-N1630OC-4GL-Video-Card-/404961907347
+GeForce RTX 4070 Super,499.97,134.2,12,220,0.6100,0.2684,0.4392,https://www.ebay.com/itm/GIGABYTE-NVIDIA-GeForce-RTX-4070-SUPER-12GB-GDDR6X-Video-Card-GV-N407SWF3OC-12GD-/305694504095
+Radeon RX 7900 GRE,499.00,135.8,16,260,0.5223,0.2721,0.3972,https://www.ebay.com/itm/ASRock-Challenger-Radeon-RX-7900-GRE-16GB-GDDR6-PCIe-4-0-Video-Graphic-Card-GPU-/204799079627
+GeForce RTX 4070 Ti,535.81,138.3,12,285,0.4853,0.2581,0.3717,https://www.ebay.com/itm/PNY-GeForce-RTX-4070-Ti-VERTO-Triple-Fan-12GB-GDDR6X-GPU-VCG4070T12TFXPB1-Read-/395461069506
+GeForce RTX 4070,499.00,122,12,200,0.6100,0.2445,0.4273,https://www.ebay.com/itm/Geforce-RTX-4070-WINDFORCE-OC-12G-Graphics-Card-3X-WINDFORCE-Fans-12GB-192-Bit-/285983041795
+Radeon RX 7900 XT,625.00,143.9,20,315,0.4568,0.2302,0.3435,https://www.ebay.com/itm/XFX-Speedster-MERC-310-AMD-Radeon-RX-7900-XT-Black-Edition-20GB-GDDR6-/235482516415
+Radeon RX 6950 XT,574.44,130.5,16,335,0.3896,0.2272,0.3084,https://www.ebay.com/itm/ASRock-AMD-Radeon-RX-6950-XT-OC-Formula-/166617258787
+Radeon RX 7900 XTX,699.00,149,24,355,0.4197,0.2132,0.3165,https://www.ebay.com/itm/ASRock-AMD-Radeon-RX-7900-XTX-Taichi-OC-24GB-GDDR6-Graphics-Card-/186477920256
+GeForce RTX 4070 Ti Super,699.99,142.3,16,285,0.4993,0.2033,0.3513,https://www.ebay.com/itm/PNY-GeForce-RTX-4070-Ti-SUPER-16GB-XLR8-Gaming-VERTO-EPIC-X-NEW-SEALED-/305585201854
+GeForce RTX 3090,588.00,125.5,24,350,0.3586,0.2134,0.2860,https://www.ebay.com/itm/READ-ZOTAC-GAMING-GeForce-RTX-3090-Trinity-OC-24GB-GDDR6X-Graphics-Card-/176496115952
+GeForce RTX 3090 Ti,689.00,130.5,24,450,0.2900,0.1894,0.2397,https://www.ebay.com/itm/EVGA-NVIDIA-GeForce-RTX-3090-FTW3-Ultra-24GB-GDDR6X-Graphics-Card-24G-P5-3987-KR-/156328396714
+GeForce RTX 4080,829.99,147,16,320,0.4594,0.1771,0.3182,https://www.ebay.com/itm/Nvidia-Geforce-Rtx-4080-16gb-Gddr6-Graphics-Card-Triple-Fan-/365038303999
+GeForce RTX 4080 Super,849.95,148.3,16,320,0.4634,0.1745,0.3189,https://www.ebay.com/itm/Zotac-Gaming-GeForce-RTX-4080-Super-AMP-Extreme-AIRO-16GB-ZT-D40820B-10P-/196450659871
 Titan RTX,649.99,99.3,24,280,0.3546,0.1528,0.2537,https://www.ebay.com/itm/NVIDIA-Titan-RTX-24GB-GDDR6-PCIe-3-0-CUDA-Graphics-Video-Card-/126573287458
+GeForce GTX 1630,129.99,16.9,4,75,0.2253,0.1300,0.1777,https://www.ebay.com/itm/Factory-Refurbished-GIGABYTE-GTX-1630-4GB-GV-N1630OC-4GL-Video-Card-/404961907347
+GeForce RTX 4090,"1,450.00",154.1,24,450,0.3424,0.1063,0.2243,https://www.ebay.com/itm/MSI-Gaming-X-Trio-GeForce-RTX-4090-Graphics-Card-Used-/226224050844
 Intel Arc A580,"123,456.00",65.1,8,185,0.3519,0.0005,0.1762,https://www.ebay.com/itm/Sparkle-Technology-Intel-Arc-A580-ORC-OC-Edition-8-GB-GDDR6-1A1-S00401400G-/176448666419
