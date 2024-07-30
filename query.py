@@ -4,14 +4,15 @@ import asyncio
 from dataclasses import dataclass, field
 from typing import List, Dict
 import aiohttp
+import re
 from dataBase.gpu import graphics_cards as card_names
 from dataBase.cpu import cpus
 
 APP_ID = "WillLaue-Finding-PRD-ac1cfea6d-bbddde16"
 ENDPOINT = "https://svcs.ebay.com/services/search/FindingService/v1"
 
-SEARCHGPUS = False
-SEARCHCPUS = True
+SEARCHGPUS = True
+SEARCHCPUS = False
 
 banned_words = [
     "shroud",
@@ -38,15 +39,17 @@ banned_words = [
     "heat sink",
     "untested",
     "1700 Cooler",
+    " es ",
+    "box only"
 ]
 
 params = {
-    "Operation-Name": "findItemsByKeywords",
-    "Service-Version": "1.0.0",
-    "Security-AppName": APP_ID,
-    "Response-Data-Format": "XML",
-    "paginationInput.entriesPerPage": 50,
-    "sort_by": "best_match",
+    "OPERATION-NAME": "findItemsByKeywords",
+    "SERVICE-VERSION": "1.0.0",
+    "SECURITY-APPNAME": APP_ID,
+    "RESPONSE-DATA-FORMAT": "XML",
+    "paginationInput.entriesPerPage": 30,
+    "sortOrder": "BestMatch",
     "itemFilter(0).name": "ListingType",
     "itemFilter(0).value": "FixedPrice",
     "itemFilter(1).name": "Condition",
@@ -58,10 +61,13 @@ params = {
     "itemFilter(1).value(5)": "6000",
 }
 
+def extract_cpu_number(keyword):
+    """Extracts the important 4-digit or 5-digit CPU number from the keyword."""
+    match = re.search(r'\d{4,5}', keyword)
+    return match.group(0) if match else None
 
 async def fetch_data(session, keyword):
-    """Aync method to fetch info about cards or cpus quickly."""
-
+    """Async method to fetch info about cards or cpus quickly."""
     params["keywords"] = keyword
     async with session.get(ENDPOINT, params=params) as response:
         if response.status != 200:
@@ -74,45 +80,48 @@ async def fetch_data(session, keyword):
         if search_result is not None:
             items = search_result.findall("ns:item", namespaces=ns)
             results = []
+            keyword_number = extract_cpu_number(keyword)  # Get the 4-digit CPU number (e.g., 5900, 9100, 7600)
             for item in items:
                 title = (
                     item.find("ns:title", namespaces=ns).text
                     if item.find("ns:title", namespaces=ns) is not None
                     else "N/A"
                 )
-                if any(
-                    banned_word.lower() in title.lower() for banned_word in banned_words
-                ):
+                if keyword_number and keyword_number not in title:
+                    print(f"Filtered out item with title: {title} (keyword number '{keyword_number}' not in title)")
                     continue
-                price = (
-                    float(
-                        item.find(".//ns:currentPrice", namespaces=ns).text.replace(
-                            ",", ""
+                for banned_word in banned_words:
+                    if banned_word.lower() in title.lower():
+                        print(f"Filtered out item with title: {title} (banned word '{banned_word}')")
+                        break
+                else:
+                    price = (
+                        float(
+                            item.find(".//ns:currentPrice", namespaces=ns).text.replace(
+                                ",", ""
+                            )
                         )
+                        if item.find(".//ns:currentPrice", namespaces=ns) is not None
+                        else float("inf")
                     )
-                    if item.find(".//ns:currentPrice", namespaces=ns) is not None
-                    else float("inf")
-                )
-                url = (
-                    item.find("ns:viewItemURL", namespaces=ns).text
-                    if item.find("ns:viewItemURL", namespaces=ns) is not None
-                    else "N/A"
-                )
-                condition = (
-                    item.find("ns:conditionDisplayName", namespaces=ns).text
-                    if item.find("ns:conditionDisplayName", namespaces=ns) is not None
-                    else "N/A"
-                )
-                results.append((price, title, url, condition))
+                    url = (
+                        item.find("ns:viewItemURL", namespaces=ns).text
+                        if item.find("ns:viewItemURL", namespaces=ns) is not None
+                        else "N/A"
+                    )
+                    condition = (
+                        item.find("ns:conditionDisplayName", namespaces=ns).text
+                        if item.find("ns:conditionDisplayName", namespaces=ns) is not None
+                        else "N/A"
+                    )
+                    results.append((price, title, url, condition))
             return keyword, results
         print(f"No 'searchResult' found in the response for {keyword}.")
         return keyword, []
 
-
 @dataclass
 class GeneralInfo:
     """Data class to encapsulate general info."""
-
     csv_filename: str = field(init=False)
     data_list: List[str] = field(init=False)
     all_prices: Dict[str, List[float]] = field(init=False)
@@ -125,10 +134,8 @@ class GeneralInfo:
         self.data_list = card_names if SEARCHGPUS else cpus
         self.all_prices = {item: [] for item in self.data_list}
 
-
 def update_csv(gen_info):
     """Read in csv data and update"""
-
     csv_data = []
     try:
         with open(gen_info.csv_filename, mode="r", encoding="utf-8") as file:
@@ -179,7 +186,6 @@ def update_csv(gen_info):
     else:
         print("No data found in the CSV file to process.")
 
-
 async def main():
     """Fetches the info and does some parsing/analysis"""
     gen_info = GeneralInfo()
@@ -210,10 +216,7 @@ async def main():
         return lowest_prices
 
     gen_info.lowest_prices = _check_low_prices()
-
     update_csv(gen_info)
-
 
 if __name__ == "__main__":
     asyncio.run(main())
-
