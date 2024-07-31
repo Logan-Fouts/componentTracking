@@ -11,8 +11,8 @@ from dataBase.cpu import cpus
 APP_ID = "WillLaue-Finding-PRD-ac1cfea6d-bbddde16"
 ENDPOINT = "https://svcs.ebay.com/services/search/FindingService/v1"
 
-SEARCHGPUS = True
-SEARCHCPUS = False
+SEARCHGPUS = False
+SEARCHCPUS = True
 
 banned_words = [
     "shroud",
@@ -40,7 +40,8 @@ banned_words = [
     "untested",
     "1700 Cooler",
     " es ",
-    "box only"
+    "box only",
+    "confidential"
 ]
 
 params = {
