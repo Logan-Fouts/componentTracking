@@ -10,7 +10,7 @@ graphics_cards = [
     "GeForce RTX 4060", "GeForce RTX 2080", "Radeon RX 7600", "Radeon RX 6650 XT", "GeForce RTX 2070 Super",
     "Intel Arc A770 16GB", "Intel Arc A770 8GB", "Radeon RX 6600 XT", "Radeon RX 5700 XT",
     "GeForce RTX 3060", "Intel Arc A750", "GeForce RTX 2070", "Radeon VII", "GeForce GTX 1080 Ti",
-    "GeForce RTX 2060 Super", "Radeon RX 6600", "Intel Arc A580", "Radeon RX 5700", "Radeon RX 5600 XT",
+    "GeForce RTX 2060 Super", "Radeon RX 6600", "Radeon RX 5700", "Radeon RX 5600 XT",
     "Radeon RX Vega 64", "GeForce RTX 2060", "GeForce GTX 1080", "GeForce RTX 3050", "GeForce GTX 1070 Ti",
     "Radeon RX Vega 56", "GeForce GTX 1660 Super", "GeForce GTX 1660 Ti", "GeForce GTX 1070", "GeForce GTX 1660",
     "Radeon RX 5500 XT 8GB", "Radeon RX 590", "GeForce GTX 980 Ti", "Radeon RX 580 8GB", "Radeon R9 Fury X",

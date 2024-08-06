@@ -5,6 +5,7 @@ from dataclasses import dataclass, field
 from typing import List, Dict
 import aiohttp
 import re
+from datetime import datetime
 from dataBase.gpu import graphics_cards as card_names
 from dataBase.cpu import cpus
 
@@ -41,7 +42,10 @@ banned_words = [
     "1700 Cooler",
     " es ",
     "box only",
-    "confidential"
+    "confidential",
+    "merch",
+    "nvlink",
+    "connector"
 ]
 
 params = {
@@ -49,7 +53,7 @@ params = {
     "SERVICE-VERSION": "1.0.0",
     "SECURITY-APPNAME": APP_ID,
     "RESPONSE-DATA-FORMAT": "XML",
-    "paginationInput.entriesPerPage": 30,
+    "paginationInput.entriesPerPage": 100,
     "sortOrder": "BestMatch",
     "itemFilter(0).name": "ListingType",
     "itemFilter(0).value": "FixedPrice",
@@ -62,10 +66,11 @@ params = {
     "itemFilter(1).value(5)": "6000",
 }
 
-def extract_cpu_number(keyword):
+def extract_number(keyword):
     """Extracts the important 4-digit or 5-digit CPU number from the keyword."""
-    match = re.search(r'\d{4,5}', keyword)
-    return match.group(0) if match else None
+    if(SEARCHCPUS):
+        match = re.search(r'\d{4,5}', keyword)
+        return match.group(0) if match else None
 
 async def fetch_data(session, keyword):
     """Async method to fetch info about cards or cpus quickly."""
@@ -81,7 +86,7 @@ async def fetch_data(session, keyword):
         if search_result is not None:
             items = search_result.findall("ns:item", namespaces=ns)
             results = []
-            keyword_number = extract_cpu_number(keyword)  # Get the 4-digit CPU number (e.g., 5900, 9100, 7600)
+            keyword_number = extract_number(keyword)  # Get the 4-digit CPU number (e.g., 5900, 9100, 7600)
             for item in items:
                 title = (
                     item.find("ns:title", namespaces=ns).text
@@ -136,56 +141,35 @@ class GeneralInfo:
         self.all_prices = {item: [] for item in self.data_list}
 
 def update_csv(gen_info):
-    """Read in csv data and update"""
-    csv_data = []
+    """Update the CSV file with new prices."""
     try:
         with open(gen_info.csv_filename, mode="r", encoding="utf-8") as file:
-            reader = csv.DictReader(file)
-            for row in reader:
-                csv_data.append(row)
+            reader = csv.reader(file)
+            existing_data = list(reader)
     except FileNotFoundError:
-        print(f"CSV file '{gen_info.csv_filename}' not found.")
+        # Initialize the CSV with card names if the file does not exist
+        existing_data = [["Card Name"] + gen_info.data_list]
 
-    if csv_data:
-        for row in csv_data:
-            name = row["Card"] if SEARCHGPUS else row["Name"]
-            if name in gen_info.lowest_prices:
-                ebay_price, _, ebay_url, _ = gen_info.lowest_prices[name]
-                row["Price ($)"] = f"{ebay_price:,.2f}"
-                row["URL"] = ebay_url
-            fps_or_score = float(row["FPS"]) if SEARCHGPUS else float(row["Score"])
-            watts = float(row["TDP"])
-            row["Power Efficiency (FPS/W)"] = (
-                f"{(fps_or_score / watts) if watts != 0 else float('inf'):.4f}"
-            )
-            price = float(row["Price ($)"].replace(",", ""))
-            if SEARCHGPUS:
-                row["Price Efficiency (FPS/$)"] = (
-                    f"{(fps_or_score / price) if price != 0 else float('inf'):.4f}"
-                )
-                price_efficiency = float(row["Price Efficiency (FPS/$)"])
-                power_efficiency = float(row["Power Efficiency (FPS/W)"])
-            if SEARCHCPUS:
-                row["Price Efficiency (Score/$)"] = (
-                    f"{(fps_or_score / price) if price != 0 else float('inf'):.4f}"
-                )
-                price_efficiency = float(row["Price Efficiency (Score/$)"])
-                power_efficiency = float(row["Power Efficiency (Score/W)"])
-            row["Average Efficiency"] = (
-                f"{(price_efficiency + power_efficiency) / 2:.4f}"
-            )
-
-        with open(
-            gen_info.csv_filename, mode="w", newline="", encoding="utf-8"
-        ) as file:
-            fieldnames = csv_data[0].keys()
-            writer = csv.DictWriter(file, fieldnames=fieldnames)
-            writer.writeheader()
-            writer.writerows(csv_data)
-
-        print(f"Results have been written to '{gen_info.csv_filename}'")
+    new_column_header = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    new_prices = {name: gen_info.lowest_prices.get(name, (float('inf'), '', '', ''))[0] for name in gen_info.data_list}
+    
+    if len(existing_data) == 1:
+        # If only header exists, add prices for the first time
+        for card_name in gen_info.data_list:
+            existing_data.append([card_name, new_prices[card_name]])
     else:
-        print("No data found in the CSV file to process.")
+        # Add new column header
+        existing_data[0].append(new_column_header)
+        # Append new prices to the existing rows
+        for row in existing_data[1:]:
+            card_name = row[0]
+            row.append(new_prices[card_name])
+
+    with open(gen_info.csv_filename, mode="w", newline="", encoding="utf-8") as file:
+        writer = csv.writer(file)
+        writer.writerows(existing_data)
+
+    print(f"Results have been written to '{gen_info.csv_filename}'")
 
 async def main():
     """Fetches the info and does some parsing/analysis"""

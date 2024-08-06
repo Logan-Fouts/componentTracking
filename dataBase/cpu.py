@@ -142,7 +142,7 @@ cpus = [
     "AMD Ryzen 7 PRO 2700X",
     "AMD Ryzen Threadripper 1900X",
     "Intel Core i5-12500T",
-    "Intel Core i9-9900 @ 3.10GHz",
+    "Intel Core i9-9900",
     "AMD Ryzen 7 1800X",
     "AMD Ryzen 5 PRO 4655G",
     "AMD Ryzen 5 PRO 4650G",
